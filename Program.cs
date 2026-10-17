@@ -37,48 +37,53 @@
 //     }
 // }
 
-bool status = true;
-while (status)
-{
-    razdelitel();
-    menu();
-    razdelitel();
-    string x = Console.ReadLine();
+ Console.WriteLine($"Gcd(48, 18) = {Gcd(48, 18)} (Ожидается: 6)");
+Console.WriteLine($"Lcm(4, 6) = {Lcm(4, 6)} (Ожидается: 12)");
 
-    switch (x) 
-    {
-        case "1": {
-            Console.Write("Введите первое число: ");
-            int a = Convert.ToInt32(Console.ReadLine());
-            Console.Write("\nВведите второе число: ");
-            int b = Convert.ToInt32(Console.ReadLine());
-            razdelitel();
-            Console.WriteLine($"сумма чисел: {Sum(a, b)}");
-        }
-        break;
-        case "2":
-            {
-                Console.Write("Введите первое число: ");
-                int a = Convert.ToInt32(Console.ReadLine());
-                Console.Write("\nВведите второе число: ");
-                int b = Convert.ToInt32(Console.ReadLine());
-                razdelitel();
-                Console.WriteLine($"максимальное: {Max(a, b)}");
-            }
-            break;
-        case "3":
-            {
-                Console.Write("Введите число: ");
-                int a = Convert.ToInt32(Console.ReadLine());
-                razdelitel();
-                Console.WriteLine($"факториал: {Factorial(a)}");
-            }
-            break;
-        case "0": Console.WriteLine("пока"); status = false; break;
-        default: Console.WriteLine("Такой команды нет"); menu(); break;
-    }
 
-}
+
+// bool status = true;
+// while (status)
+// {
+//     razdelitel();
+//     menu();
+//     razdelitel();
+//     string x = Console.ReadLine();
+
+//     switch (x) 
+//     {
+//         case "1": {
+//             Console.Write("Введите первое число: ");
+//             int a = Convert.ToInt32(Console.ReadLine());
+//             Console.Write("\nВведите второе число: ");
+//             int b = Convert.ToInt32(Console.ReadLine());
+//             razdelitel();
+//             Console.WriteLine($"сумма чисел: {Sum(a, b)}");
+//         }
+//         break;
+//         case "2":
+//             {
+//                 Console.Write("Введите первое число: ");
+//                 int a = Convert.ToInt32(Console.ReadLine());
+//                 Console.Write("\nВведите второе число: ");
+//                 int b = Convert.ToInt32(Console.ReadLine());
+//                 razdelitel();
+//                 Console.WriteLine($"максимальное: {Max(a, b)}");
+//             }
+//             break;
+//         case "3":
+//             {
+//                 Console.Write("Введите число: ");
+//                 int a = Convert.ToInt32(Console.ReadLine());
+//                 razdelitel();
+//                 Console.WriteLine($"факториал: {Factorial(a)}");
+//             }
+//             break;
+//         case "0": Console.WriteLine("пока"); status = false; break;
+//         default: Console.WriteLine("Такой команды нет"); menu(); break;
+//     }
+
+// }
 
 
 
@@ -188,7 +193,19 @@ static int ReadPositive(string message)
     }
 }
 
+static int Gcd(int a, int b)
+{
+    while (b != 0)
+    {
+        int x = b;
+        b = a % b;
+        a = x;
+    }
+    return a;
+}
 
-
-
+static int Lcm(int a, int b)
+{
+    return (a / Gcd(a, b)) * b;
+}
 
